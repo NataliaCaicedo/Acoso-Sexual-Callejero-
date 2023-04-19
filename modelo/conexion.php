@@ -5,6 +5,16 @@ $user = "root";
 $password = "admin";
 $db_name = "ascbd";
 
+include('../config/config.php');
+include('../config/database.php');
+class Usuario{
+    public $conexion;
+    
+    function __construct(){ 
+        $db= new Database();
+        $this-> conexion =$db->connectToDatabase();
+    } 
+}
 
 try{
     $bd = new PDO(

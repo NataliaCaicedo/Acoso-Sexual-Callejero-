@@ -1,16 +1,15 @@
 <?php
 
-function getFolderProyect (){
-    if (strpos(__DIR__, '/') !== false){
-    $folder= str_replace('', '/',__DIR__);
 
-
-    }else{
-        $folder = str_replace('C:\\xampp\\htdocs\\', '/', __DIR__);
-    }
-
-    $folder= str_replace('config', '', $folder);
-    return $folder;
+/* Configuracion de las url en caso de Mac o Windows */
+function getFolderProject(){
+    if (strpos(__DIR__, '/') !== false) {
+        $root = str_replace('/opt/lampp/htdocs/', '/', __DIR__);
+      } else {
+        $root = str_replace('C:\\xampp\\htdocs\\', '/', __DIR__);
+      }
+      $root = str_replace('config', '', $root);
+      return $root;
 }
 
 

@@ -1,21 +1,32 @@
 <?php
-class Database {
-    public $host='localhost'; //Servidor
-    public $user='root'; //usuario de pgpMyadmin
-    public $pass=''; //Contraseña de phpMyadmin
-    public $db='comentarios'; //Base de datos
-    public $conexion;
 
-    function connectToDatabase(comentarios){
-        $this->conexion =mysqli_connect{$this->$host, $this->$user, $this->$pass,$this->$db};
+/* ALT + SHIFT + A, Conexion a la Base de datos */
 
-        if(mysqli_connect_error ()){
-            echo' Error de conexión' . mysqli_connect_error();
+class Database{
+    public $host = 'localhost'; /* SERVIDOR */
+    public $user = 'root'; /* USUARIO DE PHPMYADMIN */
+    public $pass = '';  /* CONTRASEÑA PHPMYADMIN */
+    public $db = 'ascdb'; /* NOMBRE DE MI BASE DE DATOS */
+    private $conexion; /* CONEXION DE MI BD PRIVADA */
+
+    function __construct(){
+        $this->conexion = $this->connectToDatabase(); /* Asignamos la funcion de conexion */
+        return $this -> conexion; /* Me activa la conexion */
+    }
+
+    function connectToDatabase(){
+        $conexion= mysqli_connect($this->host, $this->user, $this->pass, $this->db);
+
+        if(mysqli_connect_error()){ /* Si hay un error que me lo muestre */
+            echo "Tenemos un error de conexion " . mysqli_connect_error();
         }
-    
-        return $this->conexion;
+        return $conexion; /* Me activa la conexion */
     }
 }
 
 
+
+
+
+?>
 
